@@ -4,7 +4,7 @@ const path = require("path");
 const db = require("./Database/config");
 const Routes = require("./Routers");
 
-db.sequelize.sync({ force: true }).then(() => {
+db.sequelize.sync({ force: false }).then(() => {
   console.log("Drop and re-sync db.");
 });
 
