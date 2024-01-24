@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
+const logger = require("morgan");
 const db = require("./Database/config");
 const Routes = require("./Routers");
 
@@ -10,6 +11,7 @@ db.sequelize.sync({ force: false }).then(() => {
 });
 
 const app = express();
+app.use(logger("dev"))
 app.use(cors({
   origin: `http://${process.env.HOST}:${process.env.PORT}`,
   credentials: true,
