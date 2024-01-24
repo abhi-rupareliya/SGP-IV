@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
+const cors = require("cors");
 const db = require("./Database/config");
 const Routes = require("./Routers");
 
@@ -9,6 +10,10 @@ db.sequelize.sync({ force: false }).then(() => {
 });
 
 const app = express();
+app.use(cors({
+  origin: `http://${process.env.HOST}:${process.env.PORT}`,
+  credentials: true,
+}));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
@@ -21,6 +26,7 @@ app.use("/user", Routes.user);
 app.use("/doctor", Routes.doctor);
 app.use("/pharmacist", Routes.pharmacist);
 app.use("/auth", Routes.auth);
+app.use("/pharmacy", Routes.pharmacy);
 
 app.listen(process.env.PORT, () => {
   console.log("Server started...");

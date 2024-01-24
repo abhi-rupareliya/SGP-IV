@@ -3,4 +3,5 @@ module.exports = {
   doctor: require("./doctor.routes"),
   pharmacist: require("./pharmacist.routes"),
   auth: require("./auth.routes"),
+  pharmacy: require("./pharmacy.routes"),
 };

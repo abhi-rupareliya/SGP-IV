@@ -29,7 +29,13 @@ const db = {
 db.User = Models.User(sequelize, Sequelize);
 db.Doctor = Models.Doctor(sequelize, Sequelize);
 db.Pharmacist = Models.Pharmacist(sequelize, Sequelize);
+db.Pharmacy = Models.Pharmacy(sequelize, Sequelize);
 
+// Associations
+db.Pharmacist.hasMany(db.Pharmacy, {foreignKey: "pharmacist_id"});
+db.Pharmacy.belongsTo(db.Pharmacist, {foreignKey: "pharmacist_id"});
+
+// Helper functions
 db.findUserByEmail = async (email) => {
   const users = await Promise.all([
     db.User.findOne({ where: { email } }),

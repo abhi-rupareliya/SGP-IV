@@ -3,4 +3,5 @@ module.exports = {
   doctor: require("./doctor.controllers"),
   pharmacist: require("./pharmacist.controllers"),
   auth: require("./auth.controllers"),
+  pharmacy: require("./pharmacy.controllers"),
 };
