@@ -135,10 +135,19 @@ exports.getPharmacy = async (req, res) => {
 
 exports.getAllPharmacies = async (req, res) => {
   try {
+    const searchQuery = {
+      city: req.query.city,
+      state: req.query.state,
+    };
+    for (let key in searchQuery) {
+      if (!searchQuery[key]) {
+        delete searchQuery[key];
+      }
+    }
     const pharmacies = await Pharmacy.findAll({
+      where: searchQuery,
       include: {
         model: Pharmacist,
-        // attributes: ["fullName"],
         attributes: { exclude: ["password", "validation"] },
       },
     });
