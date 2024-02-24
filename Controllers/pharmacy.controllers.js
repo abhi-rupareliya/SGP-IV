@@ -6,8 +6,16 @@ const fs = require("fs");
 const findUserByEmail = db.findUserByEmail;
 exports.createPharmacy = async (req, res) => {
   try {
-    const { fullName, mobileNumber, email, pharmacy_no, pharmacist_id } =
-      req.body;
+    const {
+      fullName,
+      mobileNumber,
+      email,
+      pharmacy_no,
+      pharmacist_id,
+      address,
+      city,
+      state,
+    } = req.body;
     const pharmacy = await Pharmacy.create({
       fullName,
       mobileNumber,
@@ -16,6 +24,9 @@ exports.createPharmacy = async (req, res) => {
       pharmacist_id,
       pharmacy_certificate: req.fileUrl.pharmacy_certificate,
       pharmacy_photo: req.fileUrl.pharmacy_photo,
+      address,
+      city,
+      state,
     });
     return res
       .status(201)
@@ -81,6 +92,9 @@ exports.updatePharmacy = async (req, res) => {
         pharmacy_certificate || existing.pharmacy_certificate,
       pharmacy_photo: pharmacy_photo || existing.pharmacy_photo,
       validation: req.body.validation || existing.validation,
+      address: req.body.address || existing.address,
+      city: req.body.city || existing.city,
+      state: req.body.state || existing.state,
     });
     return res.status(200).json({ message: "Pharmacy updated successfully" });
   } catch (error) {

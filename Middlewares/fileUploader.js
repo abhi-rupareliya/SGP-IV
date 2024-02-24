@@ -76,7 +76,7 @@ const fileUploader = (...fileTypes) => {
       }
       const fileUrl = {};
       for (ft of fileTypes) {
-        if (req.files[ft]) {
+        if (req.files && req.files[ft]) {
           fileUrl[
             ft
           ] = `http://${process.env.HOST}:${process.env.PORT}/uploads/${ft}s/${req.files[ft][0].filename}`;

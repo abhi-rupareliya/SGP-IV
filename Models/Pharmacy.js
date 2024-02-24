@@ -21,6 +21,15 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false,
         unique: true,
       },
+      address: {
+        type: Sequelize.STRING,
+      },
+      city: {
+        type: Sequelize.STRING,
+      },
+      state: {
+        type: Sequelize.STRING,
+      },
       pharmacy_no: {
         type: Sequelize.STRING(250),
         allowNull: false,
@@ -40,8 +49,8 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false,
         defaultValue: Sequelize.fn("NOW"),
       },
-      pharmacist_id:{
-        type:Sequelize.INTEGER,
+      pharmacist_id: {
+        type: Sequelize.INTEGER,
       },
       validation: {
         type: Sequelize.INTEGER,
