@@ -3,4 +3,5 @@ module.exports = {
   Doctor: require("./Doctor"),
   Pharmacist: require("./Pharmacist"),
   Pharmacy: require("./Pharmacy"),
+  Post: require("./Post"),
 };

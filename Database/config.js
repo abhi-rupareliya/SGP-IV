@@ -30,10 +30,14 @@ db.User = Models.User(sequelize, Sequelize);
 db.Doctor = Models.Doctor(sequelize, Sequelize);
 db.Pharmacist = Models.Pharmacist(sequelize, Sequelize);
 db.Pharmacy = Models.Pharmacy(sequelize, Sequelize);
+db.Post = Models.Post(sequelize, Sequelize);
 
 // Associations
 db.Pharmacist.hasMany(db.Pharmacy, {foreignKey: "pharmacist_id"});
 db.Pharmacy.belongsTo(db.Pharmacist, {foreignKey: "pharmacist_id"});
+db.Post.belongsTo(db.User, { foreignKey: 'userId', as: 'user' });
+db.Post.belongsTo(db.Doctor, { foreignKey: 'doctorId', as: 'doctor' });
+db.Post.belongsTo(db.Pharmacist, { foreignKey: 'pharmacistId', as: 'pharmacist' });
 
 // Helper functions
 db.findUserByEmail = async (email) => {

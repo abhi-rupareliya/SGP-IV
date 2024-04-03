@@ -35,6 +35,9 @@ const storage = multer.diskStorage({
           path.resolve(__dirname, "..", "uploads", "pharmacy_certificates")
         );
         break;
+      case "post_image":
+        cb(null, path.resolve(__dirname, "..", "uploads", "post_images"));
+        break;
       default:
         break;
     }
