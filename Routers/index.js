@@ -4,5 +4,6 @@ module.exports = {
   pharmacist: require("./pharmacist.routes"),
   auth: require("./auth.routes"),
   pharmacy: require("./pharmacy.routes"),
-  post : require("./post.routes"),
+  post: require("./post.routes"),
+  comment: require("./comment.routes"),
 };

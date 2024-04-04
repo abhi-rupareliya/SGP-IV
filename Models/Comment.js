@@ -1,23 +1,23 @@
 module.exports = (sequelize, Sequelize) => {
-  const Post = sequelize.define(
-    "Post",
+  const Comment = sequelize.define(
+    "Comment",
     {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
       },
-      title: {
-        type: Sequelize.STRING(250),
-        allowNull: false,
-      },
       description: {
-        type: Sequelize.STRING(250),
+        type: Sequelize.STRING,
         allowNull: false,
       },
-      image: {
-        type: Sequelize.STRING(250),
-        allowNull: true,
+      postId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: "Post",
+          key: "id",
+        },
       },
       userId: {
         // Foreign key for user
@@ -29,7 +29,6 @@ module.exports = (sequelize, Sequelize) => {
         },
       },
       doctorId: {
-        // Foreign key for doctor
         type: Sequelize.INTEGER,
         allowNull: true,
         references: {
@@ -38,7 +37,6 @@ module.exports = (sequelize, Sequelize) => {
         },
       },
       pharmacistId: {
-        // Foreign key for pharmacist
         type: Sequelize.INTEGER,
         allowNull: true,
         references: {
@@ -54,9 +52,8 @@ module.exports = (sequelize, Sequelize) => {
     },
     {
       timestamps: false,
-      tableName: "post",
+      tableName: "comment",
     }
   );
-
-  return Post;
+  return Comment;
 };

@@ -32,6 +32,7 @@ app.use("/pharmacist", Routes.pharmacist);
 app.use("/auth", Routes.auth);
 app.use("/pharmacy", Routes.pharmacy);
 app.use("/post", Routes.post);
+app.use("/comment", Routes.comment);
 
 app.listen(process.env.PORT, () => {
   console.log("Server started...");

@@ -5,4 +5,5 @@ module.exports = {
   auth: require("./auth.controllers"),
   pharmacy: require("./pharmacy.controllers"),
   post: require("./post.controllers"),
+  comment: require("./comment.controllers"),
 };
